@@ -1,5 +1,3 @@
-version: '3.3'
-
 volumes:
   prometheus-data:
     driver: local
@@ -14,6 +12,8 @@ services:
     volumes:
       - ./config:/etc/prometheus/
       - prometheus-data:/prometheus
+    command:
+      - '--storage.tsdb.retention.time=30d'
     networks:
       - prometheus-network
 
