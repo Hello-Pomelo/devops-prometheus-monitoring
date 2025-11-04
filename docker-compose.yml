@@ -13,6 +13,8 @@ services:
       - ./config:/etc/prometheus/
       - prometheus-data:/prometheus
     command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention.time=30d'
     networks:
       - prometheus-network
